@@ -7,6 +7,7 @@ from django.urls import path
 from houses import views as home
 
 urlpatterns = [
+    path('', home.home, name='home'),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('houses/', include('houses.urls')),

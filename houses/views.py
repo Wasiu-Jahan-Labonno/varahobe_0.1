@@ -9,6 +9,14 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 @login_required
+
+def home(request):
+    hom = House.objects.all()
+    con = {
+        'hom': hom  # Change this t     o 'hom' to match the template
+    }
+    return render(request, template_name='house/index.html', context=con)
+
 def house_list(request):
     if request.user.user_type == 'renter':
         # Renters should only see general house information

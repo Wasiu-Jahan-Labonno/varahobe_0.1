@@ -1,0 +1,199 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Houses{% endblock %}
+
+{% block content %}
+
+	<div class="content-wrapper pb-5">
+
+		<div class="container-fluid p-0">
+			<div class="home-image p-0" style="background-image:url('static/index/bgImage.jpg')">
+
+				<div class="home-content">
+					<h1> Make your living easy and comfortable to stay with us .</h1><br>
+					<h5>74/A Green Rd, Dhaka 1205</h5>
+					<a href="#" class="btn btn-light mt-2">Contact us</a>
+				</div>
+			</div>
+		</div>
+		<div class="mt-5 container bg-customg">
+			<h3 class="text-center">Search by category</h3><br>
+
+			<div class="mt-3 row align-items-center">
+				<div class="col-md-3 offset-md-1 brd-2">
+					<div class="cat-img mt-2" style="background-image:url('static/index/House.jpg');">
+					</div>
+
+
+
+					<div class="text-center mt-3">
+						<h4>APPARTMENTS</h4>
+						<p class="text-muted fs-16">We offer low maintainance living. Ideal for a busy, on-the-go lifestyle.</p>
+					</div>
+
+				</div>
+
+				<div class="col-md-3 brd-2">
+						<div class="cat-img mt-2" style="background-image:url('static/index/Cycle-image.jpg');">
+						</div>
+
+					<div class="text-center mt-3">
+						<h4>VEHICALS</h4>
+						<p class="text-muted fs-16">We offers flexibility and freedom for short-term travel needs.</p>
+					</div>
+
+				</div>
+
+				<div class="col-md-3 brd-2">
+						<div class="cat-img mt-2" style="background-image:url('static/index/Clothes.jpg');">
+						</div>
+
+					<div class="text-center mt-3">
+						<h4>CLOTHES</h4>
+						<p class="text-muted fs-16"> Access high-end  fashion without long-term  commitment. </p>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="text-center mt-3">
+{#				<a href="{% url 'looking_for' %}" class="btn btn-primary">See More <i class="bi bi-arrow-right ml-1"></i></a>#}
+			</div><br>
+
+
+
+
+	        <div class="services-title mt-5">
+	            <h3>Our Services</h3>
+	            <hr>
+	        </div>
+
+	        <div class="row">
+	          <div  class="col-md-4" >
+                  <a href="{% url 'house_list' %}">
+	              <div class="service-box">
+	                <i class="icon fas fa-globe"></i>
+	                <h4 style="color:black ;  text-decoration: none;" >Apartment Rentals</h4>
+	                <p style="color:black;  text-decoration: none;" >Find the perfect space to call home, with flexible rental terms and transparent pricing.</p>
+{#                		<a  class="btn btn-secondary">House list</a>#}
+                      </a>
+	              </div>
+
+
+			<br>
+	          </div>
+	          <div class="col-md-4 mb-4">
+	              <div class="service-box">
+	                <i class="icon fas fa-globe"></i>
+	                <h4>Clothing Rentals</h4>
+	                <p>Rent fashionable attire for any occasion, from casual wear to elegant formal outfits.</p>
+	              </div>
+	          </div>
+	          <div class="col-md-4 mb-4">
+	              <div class="service-box">
+	                <i class="icon fas fa-globe"></i>
+	                <h4>Vehicle Rentals</h4>
+	                <p>Choose from a variety of vehicles to suit your travel needs, whether for business or leisure.</p>
+	              </div>
+	          </div>
+	          <div class="col-md-4 mb-4">
+	              <div class="service-box">
+	                <i class="icon fas fa-globe"></i>
+	                <h4>Electronics Rentals</h4>
+	                <p>Stay updated with the latest gadgets and tech without the full purchase commitment.</p>
+	              </div>
+	          </div>
+	          <div class="col-md-4 mb-4">
+	              <div class="service-box">
+	                <i class="icon fas fa-globe"></i>
+	                <h4>Furniture Rentals</h4>
+	                <p>Upgrade your living space with stylish, quality furniture available for short- or long-term rentals.</p>
+	              </div>
+	          </div>
+	          <div class="col-md-4 mb-4">
+	              <div class="service-box">
+	                <i class="icon fas fa-globe"></i>
+	                <h4>Musical Instruments</h4>
+	                <p>Rent top-quality musical instruments for practice, performances, or events with flexible terms.</p>
+	              </div>
+	          </div>
+	        </div><br>
+
+			<div class="row mt-5">
+
+				<h3 class="text-center mb-5">Contact Us</h3>
+
+				<div class="col-md-4">
+					<div class="row">
+						<div class="col-md-2 mt-3">
+							<i class="bi bi-geo-alt info-icon "></i>
+						</div>
+						<div class="col-md-10">
+							<h4>Location</h4>
+							<p class="text-muted">74/A Green Rd, Dhaka 1205</p>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-2 mt-3">
+							<i class="bi bi-envelope info-icon "></i>
+						</div>
+						<div class="col-md-10">
+							<h4>Email</h4>
+							<p class="text-muted">labonnoAbidMukit@gmail.com</p>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-2 mt-3">
+							<i class="bi bi-phone info-icon "></i>
+						</div>
+						<div class="col-md-10">
+							<h4>Call</h4>
+							<p class="text-muted">01705041702</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-8">
+					<form action="#">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+								    <label class="mb-1" for="exampleInputEmail1">Name</label>
+								    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+								  </div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+								    <label class="mb-1" for="exampleInputEmail1">Email</label>
+								    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+								  </div>
+							</div>
+
+							<div class="col-md-12 mt-3">
+								<div class="form-group">
+								    <label class="mb-1" for="exampleInputEmail1">Subject</label>
+								    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+								  </div>
+							</div>
+
+							<div class="form-group mt-3">
+							    <label class="mb-1" for="exampleFormControlTextarea1">Message</label>
+							    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+							 </div>
+
+						</div>
+						<button type="submit" class="btn btn-danger mt-3">Submit</button>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+{% endblock %}

@@ -1,11 +1,52 @@
 <header>
-    <nav>
-        <a href="{% url 'house_list' %}">Home</a>
-        {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}">Logout</a>
-        {% else %}
-            <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'signup' %}">Sign Up</a>
-        {% endif %}
-    </nav>
+
+	<nav class="navbar navbar-expand-lg bg-custom p-3 m-4">
+	    <div class="container-fluid">
+	      <!-- Navbar brand -->
+
+ </div>
+	      <!-- Toggler for responsive navbar -->
+	      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>
+
+	      <!-- Navbar content -->
+	      <div class="collapse navbar-collapse" id="navbarNav">
+
+	        <div class="d-flex justify-content-between">
+	        	<div style="padding-left:20px;">
+	        		<ul class="navbar-nav">
+			          <!-- Right side menu items (3 items) -->
+			          <li class="nav-item">
+			              <a  class="nav-link" href="{% url 'house_list' %}">Home</a>
+			          </li>
+                   {% if user.is_authenticated %}
+			          <li class="nav-item">
+			            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+			          </li>
+                     {% else %}
+			          <li class="nav-item">
+			              <a class="nav-link" href="{% url 'login' %}">Login</a>
+			          </li>
+			          <li class="nav-item">
+			            <a  class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+			          </li>
+                         {% endif %}
+			          <li class="nav-item">
+			            <a class="nav-link" href="#">
+			            	<img class="nav-avatar" src="https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=">
+			            </a>
+			          </li>
+	        		</ul>
+	        	</div>
+
+
+	        </div>
+	      </div>
+	    </div>
+
+
+	</nav>
+
+
 </header>
