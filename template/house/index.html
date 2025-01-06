@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Houses{% endblock %}
+{% block title %} Vara Hobe{% endblock %}
 
 {% block content %}
 
@@ -72,7 +72,7 @@
 
 	        <div class="row">
 	          <div  class="col-md-4" >
-                  <a href="{% url 'house_list' %}">
+                  <a href="{% url 'allhouse' %}">
 	              <div class="service-box">
 	                <i class="icon fas fa-globe"></i>
 	                <h4 style="color:black ;  text-decoration: none;" >Apartment Rentals</h4>
@@ -84,13 +84,15 @@
 
 			<br>
 	          </div>
-	          <div class="col-md-4 mb-4">
+	        <div class="col-md-4 mb-4">
+                    <a   href="{% url 'clothing' %}">
 	              <div class="service-box">
 	                <i class="icon fas fa-globe"></i>
-	                <h4>Clothing Rentals</h4>
-	                <p>Rent fashionable attire for any occasion, from casual wear to elegant formal outfits.</p>
+	                <h4 style="color:black; text-decoration: none">Clothing Rentals</h4>
+	                <p style="color:black;text-decoration: none;">Rent fashionable attire for any occasion, from casual wear to elegant formal outfits.</p>
+                       </a>
 	              </div>
-	          </div>
+            </div>
 	          <div class="col-md-4 mb-4">
 	              <div class="service-box">
 	                <i class="icon fas fa-globe"></i>

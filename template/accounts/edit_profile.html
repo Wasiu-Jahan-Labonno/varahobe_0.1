@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Edit Profile</h2>
+    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="col-md-6">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                {{ form.user_type.label_tag }}
+                {{ form.user_type }}
+            </div>
+            <div class="col-md-6">
+                <label for="profile_picture">Profile Picture</label>
+                {{ form.profile_picture }}
+                <small class="form-text text-muted">Max size: 2MB. Formats: JPG, PNG.</small>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col text-center">
+                <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
+            </div>
+        </div>
+    </form>
+    <div class="text-center mt-4">
+        <img src="{{ user.profile_picture.url }}" alt="Current Profile Picture" class="img-thumbnail" style="width: 150px; height: 150px; border-radius: 50%;">
+    </div>
+</div>
+{% endblock %}

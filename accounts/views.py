@@ -2,7 +2,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from .forms import SignUpForm, CustomAuthenticationForm
-
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .forms import EditProfileForm
 
 def signup(request):
     if request.method == 'POST':
@@ -24,8 +26,21 @@ def login_view(request):
             return redirect('home')  # Replace 'home' with your desired redirect URL
     else:
         form = CustomAuthenticationForm()
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'accounts/login.html', {'form': form})
 
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+
+@login_required
+def my_profile(request):
+    user = request.user
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('my_profile')
+    else:
+        form = EditProfileForm(instance=user)
+    return render(request, 'accounts/my_profile.html', {'form': form, 'user': user})

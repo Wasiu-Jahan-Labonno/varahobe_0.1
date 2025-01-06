@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ house.title }} - Details{% endblock %}
+
+{% block content %}
+<div class="content-wrapper pb-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                {% if house.image %}
+                <img src="{{ house.image.url }}" alt="{{ house.title }}" class="img-fluid rounded shadow">
+                {% else %}
+                <img src="{% static 'Images/default-house.jpg' %}" alt="Default House" class="img-fluid rounded shadow">
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                <h2>{{ house.title }}</h2>
+                <p><strong>Location:</strong> {{ house.area }}</p>
+                <p><strong>Price:</strong> ${{ house.price }}</p>
+                <p><strong>Description:</strong> {{ house.description }}</p>
+
+                <div class="mt-4">
+                    {% if is_owner %}
+                    <a href="{% url 'house_edit' house.pk %}" class="btn btn-warning">Edit</a>
+                    <a href="{% url 'house_delete' house.pk %}" class="btn btn-danger">Delete</a>
+                    {% else %}
+                    <a href="{% url 'contact_owner' house.pk %}" class="btn btn-primary">Contact Owner</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

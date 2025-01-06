@@ -1,37 +1,37 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Create/Edit House{% endblock %}
+{% block title %}ADD House{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2 class="mb-4">{% if form.instance.pk %}Edit{% else %}Create{% endif %} House Listing</h2>
+
+
+
+<div class="container">
+    <h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} House Listing</h2>
 
     <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
         {% csrf_token %}
-        <div class="row g-3">
-            {% for field in form %}
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                    {{ field }}
-                    {% if field.errors %}
-                    <div class="invalid-feedback">
-                        {{ field.errors|striptags }}
-                    </div>
-                    {% else %}
-                    <div class="form-text">{{ field.help_text }}</div>
-                    {% endif %}
-                </div>
-            </div>
-            {% endfor %}
+        {% for field in form %}
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.errors %}
+        <div class="invalid-feedback">
+            {{ field.errors|striptags }}
         </div>
-        <div class="mt-4">
-            <button type="submit" class="btn btn-primary">
-                {% if form.instance.pk %}Update{% else %}Create{% endif %} Listing
-            </button>
-            <a href="{% url 'house_list' %}" class="btn btn-secondary">Back to Listings</a>
-        </div>
+        {% else %}
+        <div class="form-text">{{ field.help_text }}</div>
+        {% endif %}
+        {% endfor %}
+
+        <button type="submit">
+            {% if form.instance.pk %}Update{% else %}Create{% endif %} Listing
+        </button>
+        <a href="{% url 'house_list' %}" style="text-decoration: none; padding: 12px 20px; margin-left: 10px; background-color: #ccc; border-radius: 4px; color: black;">Back to Listings</a>
     </form>
 </div>
+
+</body>
+</html>
+
 {% endblock %}

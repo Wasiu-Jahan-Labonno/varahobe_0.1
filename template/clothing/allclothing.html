@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Available Clothing{% endblock %}
+
+{% block content %}
+<div class="content-wrapper pb-5 mt-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Available Clothing for Rent</h2>
+
+        <div class="row">
+            {% for cloth in clothing %}
+            <div class="col-md-4 mb-5">
+                <div class="card border-0">
+
+                    <!-- Display house image or a default image if not available -->
+                    {% if cloth.image %}
+                    <div class="look-img p-0" style="background-image: url('{{ cloth.image.url }}')"></div>
+                    {% else %}
+                    <div class="look-img p-0" style="background-image: url('{% static "Images/default-house.jpg" %}')"></div>
+                    {% endif %}
+
+                    <div class="card-body shadow">
+                        <div class="mt-1 px-2">
+                            <h4>{{ cloth.title }}</h4>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-4 px-2 mt-2">
+                            <div>
+                                <span class="small"><strong>Location:</strong> {{ cloth.area }}</span><br>
+                                <span class="small"><strong>Price:</strong> ${{ cloth.price }}</span><br>
+                                <span class="small"><strong>Description:</strong> {{ cloth.description }}</span>
+                            </div>
+                        </div>
+                        <a href="{% url 'clothing_detail' cloth.pk %}" class="text-dark px-2 cat_link" style="text-decoration: none;">See Details <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center">No houses available at the moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'houses',
+    'clothing',
     'widget_tweaks'
 ]
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'

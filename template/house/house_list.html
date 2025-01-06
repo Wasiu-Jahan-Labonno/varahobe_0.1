@@ -4,32 +4,55 @@
 {% block title %}Available Houses{% endblock %}
 
 {% block content %}
-<h2>Available Houses for Rent</h2>
+<div class="content-wrapper pb-5 mt-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Available Houses for Rent</h2>
 
-<div class="house-list">
-    {% for house in houses %}
-    <div class="house-item">
-        <h3>{{ house.title }}</h3>
-        <p><strong>Location:</strong> {{ house.area }}</p>
-        <p><strong>Price:</strong> ${{ house.price }}</p>
-        <p><strong>Description:</strong> {{ house.description }}</p>
 
-        {% if house.image %}
-        <img src="{{ house.image.url }}" alt="{{ house.title }}" style="max-width: 300px; height: auto;">
-        {% endif %}
+        <div class="row">
+            {% for house in houses %}
+            <div class="col-md-4 mb-5">
+                <div class="card border-0">
+                    {% if house.image %}
+                    <div class="look-img p-0" style="background-image: url('{{ house.image.url }}')"></div>
+                    {% else %}
+                    <div class="look-img p-0" style="background-image: url('{% static 'Images/default-house.jpg' %}')"></div>
+                    {% endif %}
+
+                    <div class="card-body shadow">
+                        <div class="mt-1 px-2">
+                            <h4>{{ house.title }}</h4>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-4 px-2 mt-2">
+                            <div>
+                                <span class="small"><strong>Location:</strong> {{ house.area }}</span><br>
+                                <span class="small"><strong>Price:</strong> ${{ house.price }}</span><br>
+                                <span class="small"><strong>Description:</strong> {{ house.description }}</span>
+                            </div>
+                        </div>
+
+                        <a href="{% url 'house_detail' pk=house.id %}" class="text-dark px-2 cat_link" style="text-decoration: none;">See Details <i class="bi bi-arrow-right"></i></a>
+
+                        {% if user.user_type == 'owner' %}
+                        <div class="mt-3 px-2">
+                            <p><strong>Owned by:</strong> You</p>
+                            <a href="{% url 'house_edit' house.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{% url 'house_delete' house.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center">No houses available at the moment.</p>
+            {% endfor %}
+        </div>
 
         {% if user.user_type == 'owner' %}
-        <p><strong>Owned by:</strong> You</p>
-        <a href="{% url 'house_edit' house.pk %}">Edit</a>
-        <a href="{% url 'house_delete' house.pk %}">Delete</a>
+        <div class="text-center mt-4">
+            <a href="{% url 'house_create' %}" class="btn btn-success">Add New House</a>
+        </div>
         {% endif %}
     </div>
-    {% empty %}
-    <p>No houses available at the moment.</p>
-    {% endfor %}
 </div>
-
-{% if user.user_type == 'owner' %}
-<a href="{% url 'house_create' %}">Add New House</a>
-{% endif %}
 {% endblock %}

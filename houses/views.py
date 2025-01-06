@@ -11,11 +11,19 @@ from django.contrib.auth.decorators import login_required
 @login_required
 
 def home(request):
-    hom = House.objects.all()
+    houses = House.objects.all()
     con = {
-        'hom': hom  # Change this t     o 'hom' to match the template
+        'houses': houses  # Change this t     o 'hom' to match the template
     }
     return render(request, template_name='house/index.html', context=con)
+
+
+def allhouse(request):
+    houses = House.objects.all()
+    con = {
+        'houses': houses  # Change this t     o 'hom' to match the template
+    }
+    return render(request, template_name='house/house.html', context=con)
 
 def house_list(request):
     if request.user.user_type == 'renter':
@@ -58,3 +66,24 @@ def house_delete(request, pk):
     house = get_object_or_404(House, pk=pk, owner=request.user)
     house.delete()
     return redirect('house_list')
+
+@login_required
+def house_detail(request, pk):
+    house = get_object_or_404(House, pk=pk)
+    is_owner = house.owner == request.user
+
+    context = {
+        'house': house,
+        'is_owner': is_owner,
+    }
+    return render(request, 'house/house_detail.html', context)
+
+def contact_owner(request, pk):
+    house = get_object_or_404(House, pk=pk)
+    owner = house.owner  # Assuming 'owner' is the ForeignKey field in House model linking to User
+
+    context = {
+        'house': house,
+        'owner': owner,
+    }
+    return render(request, 'house/contact.html', context)

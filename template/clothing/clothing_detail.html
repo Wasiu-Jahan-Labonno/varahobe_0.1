@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ clothing.title }} - Details{% endblock %}
+
+{% block content %}
+<div class="content-wrapper pb-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                {% if clothing.image %}
+                <img src="{{ clothing.image.url }}" alt="{{ clothing.title }}" class="img-fluid rounded shadow">
+                {% else %}
+                <img src="{% static 'Images/default-house.jpg' %}" alt="Default House" class="img-fluid rounded shadow">
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                <h2>{{ clothing.title }}</h2>
+                <p><strong>Location:</strong> {{ clothing.area }}</p>
+                <p><strong>Price:</strong> ${{ clothing.price }}</p>
+                <p><strong>Description:</strong> {{ clothing.description }}</p>
+
+                <div class="mt-4">
+                    {% if is_owner %}
+                    <a href="{% url 'clothing_edit' clothing.pk %}" class="btn btn-warning">Edit</a>
+                    <a href="{% url 'clothing_delete' clothing.pk %}" class="btn btn-danger">Delete</a>
+                    {% else %}
+                    <a href="#" class="btn btn-primary">Contact Owner</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

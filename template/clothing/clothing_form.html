@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Create/Edit Cloth{% endblock %}
+
+{% block content %}
+
+
+<div class="container mt-5">
+    <h2 class="mb-4">{% if form.instance.pk %}Edit{% else %}Create{% endif %} clothing Listing</h2>
+
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                <div class="invalid-feedback" style="color: red;">
+                    {{ field.errors|striptags }}
+                </div>
+                {% endif %}
+                {% if field.help_text %}
+                <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <div class="mt-4">
+                <input type="submit" value="{% if form.instance.pk %}Update{% else %}Create{% endif %}" class="btn btn-primary">
+                <a href="{% url 'clothing_list' %}" class="btn btn-secondary">Back to Listings</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
